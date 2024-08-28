@@ -28,3 +28,6 @@ pylint app.py
 mypy --show-error-codes --check-untyped-defs app.py
 
 ```
+
++ [![Pylint](https://img.shields.io/badge/Pylint-yellowgreen)](https://pypi.org/project/pylint/)
++ [![Mypy](https://img.shields.io/badge/Mypy-darkblue)](https://mypy.readthedocs.io/en/stable/)
