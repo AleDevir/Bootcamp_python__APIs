@@ -11,10 +11,6 @@ Integrantes:
 - Mayla Silva de Siqueira Krama
 - Thaysa Borges de Lima Santos
 - Rafaela Clementino Pereira Caro
-### Links Úteis:
-+ [![Python](https://img.shields.io/badge/Python-blue)](https://www.python.org/downloads/)
-+ [![Pylint](https://img.shields.io/badge/Pylint-yellowgreen)](https://pypi.org/project/pylint/)
-+ [![Mypy](https://img.shields.io/badge/Mypy-darkblue)](https://mypy.readthedocs.io/en/stable/)
 
 Comando para instalação dos pacotes:
 ```
@@ -27,10 +23,10 @@ Comando para executar o servidor (modo debug porta=8888):
 python app.py
 
 ```
+[Documentação](https://github.com/AleDevir/Bootcamp_python__APIs/blob/Desafio_api_rick_morty_grace_hopper/docs/documentacao.md)
 
-Verificação Estática de Código (pylint e mypy):
-```
-pylint app.py
+[Requeriments](https://github.com/AleDevir/Bootcamp_python__APIs/blob/Desafio_api_rick_morty_grace_hopper/requirements.txt)
 
-mypy --show-error-codes --check-untyped-defs app.py
-```
+Cronogrma
+
+![image](https://github.com/user-attachments/assets/df3ee611-b3cf-45a7-bdad-da315b7b23f6)
