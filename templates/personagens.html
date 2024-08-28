@@ -8,7 +8,10 @@
 {% else %}
 <span>&nbsp;</span>
 {% endif %}
+
+{% if page < dados.info.pages %}
 <a href="/personagens/{{page+1}}" class="btn btn-sm text-info mt-3 border border-info" >próximo</a>
+{% endif %}
 </div>
 <h4 style="text-align: center; margin-bottom: 8px;" class="text-info">Personagens</h4>
 <div class="row mt-3">
