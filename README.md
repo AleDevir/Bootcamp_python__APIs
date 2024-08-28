@@ -32,6 +32,6 @@ Estrutura de Navegação:
 ![image](https://github.com/user-attachments/assets/91bb3bca-2355-41eb-91c4-ea5d7fc5e5c6)
 
 
-Cronogrma
+Cronograma
 ![image](https://github.com/user-attachments/assets/935654f7-53ce-42ff-8a7d-996861f133de)
 
