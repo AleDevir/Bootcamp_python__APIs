@@ -3,21 +3,21 @@
 
 <div class="d-flex justify-content-between"> 
 {% if page > 1 %}
-<a href="/personagens/{{page-1}}" class="btn btn-sm text-info mt-3 border border-info"  >voltar</a>
+<a href="{{ url_for('personagens', page = page-1)}}" class="btn btn-sm text-info mt-3 border border-info"  >voltar</a>
 
 {% else %}
 <span>&nbsp;</span>
 {% endif %}
 
 {% if page < dados.info.pages %}
-<a href="/personagens/{{page+1}}" class="btn btn-sm text-info mt-3 border border-info" >próximo</a>
+<a href="{{ url_for('personagens', page = page+1)}}" class="btn btn-sm text-info mt-3 border border-info" >próximo</a>
 {% endif %}
 </div>
 <h4 style="text-align: center; margin-bottom: 8px;" class="text-info">Personagens</h4>
 <div class="row mt-3">
     {% for personagem in dados.results %}
     <div class="col-xl-2 col-lg-3 col-sm-4 col-6">
-        <a href="/personagem/{{personagem.id}}">
+        <a href="{{ url_for('personagem', idt = personagem.id) }}">
             <img src="{{personagem.image}}" alt="{{personagem.name}}"  class="img-fluid img-thumbnail border-0 bg-info"/>
         </a>
         <p style="text-align: center;" class="text-info">{{personagem.name}}</p>

@@ -7,7 +7,7 @@ from typing import Any
 import json
 import urllib.request
 from flask import Flask, render_template, send_from_directory, redirect
-from werkzeug.exceptions import HTTPException
+
 
 app = Flask(__name__)
 
@@ -183,40 +183,24 @@ def residentes_da_localizacao(idt: int):
 #####################################################
 
 @app.errorhandler(404)
-def page_not_found(exeption):
+def page_not_found(exeption: Exception) -> tuple[str, int]:
     '''
     Página não encontrada
     status code = 404
     https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/
     '''
-    print(f"type(exeption)={type(exeption)}")
-    print(str(exeption))
-
+    print(f"type(exeption)={type(exeption)} ERRO: {str(exeption)}")
     return render_template('erro.html', msg='Página não encontrada!'), 404
 
 
-@app.errorhandler(500)
-def page_error(exeption):
-    '''
-    Erro inesperado
-    status code = 500
-    https://flask.palletsprojects.com/en/2.3.x/errorhandling/#further-examples
-    '''
-    print(f"type(exeption)={type(exeption)}")
-    print(str(exeption))
-
-    return render_template('erro.html', msg='Ops! Ocorreu um erro inesperado.'), 500
-
-
 @app.errorhandler(Exception)
-def handle_exception(exception: Exception):
+def handle_exception(exception: Exception) -> tuple[str, int]:
     '''
     Captura as exceções
     https://flask.palletsprojects.com/en/2.3.x/errorhandling/
     '''
-    if isinstance(exception, HTTPException):
-        return exception
-    return render_template("erro.html", msg=str(exception)), 500
+    print(f"TYPE: {type(exception)} ERRO: {str(exception)}")
+    return render_template("erro.html", msg='Ops! Ocorreu um erro inesperado.'), 500
 
 
 if __name__ == "__main__":
