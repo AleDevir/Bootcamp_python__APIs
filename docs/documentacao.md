@@ -5,6 +5,9 @@ python app.py
 
 ## Documentação utilizada:
 
++ [Python-urllib]( https://docs.python.org/3/howto/urllib2.html)
+
++ [Variable Rules]( https://flask.palletsprojects.com/en/1.1.x/quickstart/#variable-rules)
 
 + [Favicon](https://flask.palletsprojects.com/en/2.3.x/patterns/favicon/)
 
