@@ -32,6 +32,9 @@ Estrutura de Navegação:
 ![image](https://github.com/user-attachments/assets/91bb3bca-2355-41eb-91c4-ea5d7fc5e5c6)
 
 
-Cronograma
+Cronograma:
 ![image](https://github.com/user-attachments/assets/935654f7-53ce-42ff-8a7d-996861f133de)
 
+
+Distribuição das atividades:
+![image](https://github.com/AleDevir/Bootcamp_python__APIs/blob/Desafio_api_rick_morty_grace_hopper/docs/distribuicao-das-atividades.png)
