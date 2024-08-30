@@ -37,12 +37,7 @@
     animation: girando 15s infinite;
   }
 
-.bg-nav {
-    background-color: #030311;
-    opacity: 0.8;
-}
-
-.bg-nav-hover:hover {
+.bg-hover:hover {
     background-color: #373759;
     opacity: 0.8;
 }
