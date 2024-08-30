@@ -17,10 +17,13 @@
 <div class="row mt-3">
     {% for personagem in dados.results %}
     <div class="col-xl-2 col-lg-3 col-sm-4 col-6">
-        <a href="{{ url_for('personagem', idt = personagem.id) }}">
-            <img src="{{personagem.image}}" alt="{{personagem.name}}"  class="img-fluid img-thumbnail border-0 bg-info"/>
-        </a>
-        <p style="text-align: center;" class="text-info">{{personagem.name}}</p>
+        <div class="border border-info  text-center rounded">
+            <img src="{{personagem.image}}" alt="{{personagem.name}}"  class="img-fluid img-thumbnail border-0 bg-transparent"/>
+            <div class="bg-info rounded-bottom">
+                <a href="{{ url_for('personagem', idt = personagem.id) }}" class="btn border-0 bg-info">Ver perfil</a>
+            </div>
+        </div>    
+        <p style="text-align: center;" class="text-info mt-1">{{personagem.name}}</p>
     </div>
     {% endfor %}
 </div>
