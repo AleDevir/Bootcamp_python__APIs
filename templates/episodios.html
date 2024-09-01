@@ -1,0 +1,24 @@
+{% extends "layout.html" %}           
+{% block content %}
+    <h4 class="text-info text-center mb-5 mt-5">Episódios</h4> 
+    <div class = "row">
+    {% for episodio in episodios %}
+        <div class="col-md-4 mb-4">
+            <div class="border border-info text-right rounded p-3 bg-info text-dark">
+                <div class="episodio-info">
+                    <b>Nome do episódio:</b> {{ episodio.name }}
+                </div>
+                <div class="episodio-info">
+                    <b>Data de lançamento:</b> {{ episodio.air_date }}
+                </div>
+                <div class="episodio-info">
+                    <b>Código do episódio:</b> {{ episodio.episode }}
+                </div>
+                <div class="episodio-link">
+                    <a href="{{ episodio.url }}" target="_blank">Link para o episódio</a>
+                </div>
+            </div>        
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

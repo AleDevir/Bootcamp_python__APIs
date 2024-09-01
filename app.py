@@ -63,11 +63,22 @@ def api_personagem(idt: int) -> dict[str, Any]:
 
 
 @app.route('/api/episodios/<int:page>')
-def api_episodios(page: int) -> dict[str, Any]:
-    '''
-    Episódios
-    '''
-    return get_json_data_for(f"https://rickandmortyapi.com/api/episode?page={page}")
+def api_episodios() -> dict[str, Any]:
+
+    url = "https://rickandmortyapi.com/api/episode"
+    dic = get_json_data_for(url)
+    episodios = []
+
+    for episodio in dic["results"]:
+        episodio = {
+            "Nome do episódio: ": episodio["name"],
+            "Data em que foi ao ar: ": episodio["air_date"],
+            "Código do episódio: ": episodio["episode"],
+            "Link para o episódio: " : episodio["url"]
+        }
+        episodios.append(episodio)
+
+    return episodios
 
 
 @app.route('/api/episodio/<int:idt>')
@@ -126,10 +137,10 @@ def personagem(idt: int):
 
 @app.route('/episodios')
 def episodios_sem_pagina():
-    '''
-    Episódios
-    '''
-    return redirect('/episodios/1')
+    url = "https://rickandmortyapi.com/api/episode"
+    dic = get_json_data_for(url)
+    
+    return render_template("episodios.html", episodios=dic["results"])
 
 
 @app.route('/episodios/<int:page>')
