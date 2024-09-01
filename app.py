@@ -56,11 +56,14 @@ def api_personagens(page: int) -> dict[str, Any]:
 
 @app.route('/api/personagem/<int:idt>')
 def api_personagem(idt: int) -> dict[str, Any]:
-    '''
-    Personagem
-    '''
-    return get_json_data_for(f"https://rickandmortyapi.com/api/character/{idt}")
 
+    personagem_url = f"https://rickandmortyapi.com/api/character/{idt}"
+    personagem = get_json_data_for(personagem_url)
+
+    origem = get_json_data_for(personagem['origin']['url']) if personagem['origin']['url'] else {}
+    localizacao = get_json_data_for(personagem['location']['url']) if personagem['location']['url'] else {}
+
+    return render_template('personagem.html', personagem=personagem, origem=origem, localizacao=localizacao)
 
 @app.route('/api/episodios/<int:page>')
 def api_episodios() -> dict[str, Any]:
