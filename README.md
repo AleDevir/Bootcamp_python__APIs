@@ -28,8 +28,8 @@ python app.py
 [Requeriments](https://github.com/AleDevir/Bootcamp_python__APIs/blob/Desafio_api_rick_morty_grace_hopper/requirements.txt)
 
 
-Estrutura de Navegação:
-![image](https://github.com/user-attachments/assets/91bb3bca-2355-41eb-91c4-ea5d7fc5e5c6)
+Proposta de Estrutura de Navegação:
+![image](https://github.com/AleDevir/Bootcamp_python__APIs/blob/Desafio_api_rick_morty_grace_hopper/docs/estrutura-de-navegacao.png)
 
 
 Cronograma:
