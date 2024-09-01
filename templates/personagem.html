@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <img src="{{personagem.image}}" alt="{{personagem.name}}" class="img-fluid img-thumbnail">
+    </div>
+    <div class="col-md-8">
+      <h2>{{personagem.name}}</h2>
+      <p><strong>Espécie:</strong> {{personagem.species}}</p>
+      <p><strong>Gênero:</strong> {{personagem.gender}}</p>
+      <p><strong>Origem:</strong>
+        {% if origem %}
+         <a href="{{url_for('localizacao', idt=origem.id)}}">{{ personagem.origin.name}}</a>
+        {% else %}
+         {{personagem.origin.name}}
+        {% endif %}
+      </p>
+      <p><strong>Localização:</strong>
+        {% if localizacao %}
+          <a href="{{url_for('localizacao', idt=localizacao.id)}}">{{personagem.location.name}}</a>
+        {% else %}
+         {{personagem.location.name}}
+        {% endif %}
+      </p>
+      <h4>Episódios</h4>
+       <ul>
+        {% for episode in personagem.episode %}
+        <li><a href="{{episode}}">{{episode.split('/')[-1]}}</a></li>
+        {% endfor %}
+       </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
