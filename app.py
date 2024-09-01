@@ -135,16 +135,16 @@ def personagem(idt: int):
     return '<h1 style="color: red;">Fazer a renderização da página com informações de um personagem.<h1/>'
 
 
-@app.route('/episodios')
+@app.route('/episodes')
 def episodios_sem_pagina():
     url = "https://rickandmortyapi.com/api/episode"
     dic = get_json_data_for(url)
     
-    return render_template("episodios.html", episodios=dic["results"])
+    return render_template("episodes.html", episodios=dic["results"])
 
 
-@app.route('/episodios/<int:page>')
-def episodios(page: int):
+@app.route('/episodes/<int:page>')
+def episodes(page: int):
     '''
     Episódios
     '''
@@ -152,8 +152,8 @@ def episodios(page: int):
     return '<h1 style="color: red;">Fazer a renderização da página com informações dos episódios.<h1/>'
 
 
-@app.route('/personagens_do_episodio/<int:idt>')
-def personagens_do_episodio(idt: int):
+@app.route('/episode/<int:idt>')
+def episode(idt: int):
     '''
     Episódio de identificador informado.
     '''
@@ -162,16 +162,16 @@ def personagens_do_episodio(idt: int):
 
 
 
-@app.route('/localizacoes')
+@app.route('/locations')
 def localizacoes_sem_pagina():
     '''
     Localizações
     '''
-    return redirect('/localizacoes/1')
+    return redirect('/locations/1')
 
 
-@app.route('/localizacoes/<int:page>')
-def localizacoes(page: int):
+@app.route('/locations/<int:page>')
+def locations(page: int):
     '''
     Localizações
     '''
@@ -179,8 +179,8 @@ def localizacoes(page: int):
     return '<h1 style="color: red;">Fazer a renderização da página com as informações das localizações.<h1/>'
 
 
-@app.route('/residentes_da_localizacao/<int:idt>')
-def residentes_da_localizacao(idt: int):
+@app.route('/location/<int:idt>')
+def location(idt: int):
     '''
     residentes de identificador informado.
     '''
