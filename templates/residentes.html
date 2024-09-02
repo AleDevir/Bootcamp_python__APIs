@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Localização: {{ location_data.name }}</h1>
+<p><strong>Tipo:</strong> {{ location_data.type }}</p>
+<p><strong>Dimensão:</strong> {{ location_data.dimension }}</p>
+
+<h2>Residentes:</h2>
+<ul>
+    {% for residente in residentes %}
+    <li>
+        <a href="{{ residente['url'] }}">{{ residente['Nome'] }}</a> 
+        ({{ residente['Espécie'] }} - {{ residente['Status'] }})
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %} 
+
