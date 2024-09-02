@@ -11,6 +11,7 @@ from flask import Flask, render_template, send_from_directory, redirect
 
 app = Flask(__name__)
 
+
 @app.route('/favicon.ico')
 def favicon():
     '''
@@ -33,6 +34,7 @@ def home():
 #####################################################
 ####           APIs   RICK  &  MORTY             ####
 #####################################################
+
 
 def get_json_data_for(url: str) -> dict[str, Any]:
     '''
@@ -74,7 +76,7 @@ def api_episodios() -> dict[str, Any]:
             "Nome do episódio: ": episodio["name"],
             "Data em que foi ao ar: ": episodio["air_date"],
             "Código do episódio: ": episodio["episode"],
-            "Link para o episódio: " : episodio["url"]
+            "Link para o episódio: ": episodio["url"]
         }
         episodios.append(episodio)
 
@@ -139,7 +141,7 @@ def personagem(idt: int):
 def episodios_sem_pagina():
     url = "https://rickandmortyapi.com/api/episode"
     dic = get_json_data_for(url)
-    
+
     return render_template("episodes.html", episodios=dic["results"])
 
 
@@ -159,7 +161,6 @@ def episode(idt: int):
     '''
     print(f"Episódio ID={idt}")
     return '<h1 style="color: red;">Fazer a renderização da página com as informações de um episódio e seus personagens.<h1/>'
-
 
 
 @app.route('/locations')
@@ -187,6 +188,35 @@ def location(idt: int):
     print(f"Localização ID={idt}")
     return '<h1 style="color: red;">Fazer a renderização da página com as informações de uma localização e seus residentes (personagens).<h1/>'
 
+
+@app.route('/residentes_da_localizacao/<int:idt>')
+def residentes_da_localizacao(idt: int):
+    '''
+    Exibe os residentes de uma localização específica.
+    '''
+    # Fazendo a requisição para a API para obter os dados da localização
+    location_data = get_json_data_for(
+        f"https://rickandmortyapi.com/api/location/{idt}")
+
+    # Inicializando a lista de residentes
+    residentes = []
+
+    # Iterando sobre a lista de URLs dos residentes
+    for residente_url in location_data.get("residents", []):
+
+        # Fazendo a requisição para cada residente
+        residente_data = get_json_data_for(residente_url)
+
+        # Adicionando as informações do residente na lista
+        residente_info = {
+            "Nome": residente_data["name"],
+            "Espécie": residente_data["species"],
+            "Status": residente_data["status"],
+            "url": residente_data["url"]
+        }
+        residentes.append(residente_info)
+
+    return render_template('residentes.html', location_data=location_data, residentes=residentes)
 
 
 #####################################################
