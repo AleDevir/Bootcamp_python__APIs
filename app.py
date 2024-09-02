@@ -183,15 +183,6 @@ def locations(page: int):
 @app.route('/location/<int:idt>')
 def location(idt: int):
     '''
-    residentes de identificador informado.
-    '''
-    print(f"Localização ID={idt}")
-    return '<h1 style="color: red;">Fazer a renderização da página com as informações de uma localização e seus residentes (personagens).<h1/>'
-
-
-@app.route('/residentes_da_localizacao/<int:idt>')
-def residentes_da_localizacao(idt: int):
-    '''
     Exibe os residentes de uma localização específica.
     '''
     # Fazendo a requisição para a API para obter os dados da localização
@@ -216,7 +207,7 @@ def residentes_da_localizacao(idt: int):
         }
         residentes.append(residente_info)
 
-    return render_template('residentes.html', location_data=location_data, residentes=residentes)
+    return render_template('location.html', location_data=location_data, residentes=residentes)
 
 
 #####################################################
