@@ -143,7 +143,7 @@ def episodes(page: int):
     '''
     dic = api_episodios(page)
 
-    return render_template("episodes.html", episodios=dic["results"])
+    return render_template("episodes.html", dic=dic, page=page)
 
 
 @app.route('/episode/<int:idt>')
