@@ -155,7 +155,7 @@ def episode(idt: int):
     return '<h1 style="color: red;">Fazer a renderização da página com as informações de um episódio e seus personagens.<h1/>'
 
 
-@app.route('/locations')
+app.route('/locations')
 def localizacoes_sem_pagina():
     '''
     Localizações
@@ -168,8 +168,8 @@ def locations(page: int):
     '''
     Localizações
     '''
-    print(f"Localizações PAGE={page}")
-    return '<h1 style="color: red;">Fazer a renderização da página com as informações das localizações.<h1/>'
+    data = api_localizacoes(page)
+    return render_template('locations.html', localizacoes=data['results'], page=page)
 
 
 @app.route('/location/<int:idt>')
@@ -201,7 +201,6 @@ def location(idt: int):
 
     return render_template('location.html', location_data=location_data, residentes=residentes)
 
-
 #####################################################
 ####           TRATAMENTO  DE  ERROS             ####
 #####################################################
@@ -232,3 +231,4 @@ if __name__ == "__main__":
     # Development Server:
     # https://flask-fr.readthedocs.io/server/
     app.run(debug=True, port=8888)
+
