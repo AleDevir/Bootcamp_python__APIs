@@ -128,10 +128,10 @@ def personagem(idt: int):
 
 @app.route('/episodes')
 def episodios_sem_pagina():
-    url = "https://rickandmortyapi.com/api/episode"
-    dic = get_json_data_for(url)
-
-    return render_template("episodes.html", episodios=dic["results"])
+    '''
+    Episódios
+    '''
+    return redirect('/episodes/1')
 
 
 @app.route('/episodes/<int:page>')
@@ -139,8 +139,9 @@ def episodes(page: int):
     '''
     Episódios
     '''
-    print(f"Episódios PAGE={page}")
-    return '<h1 style="color: red;">Fazer a renderização da página com informações dos episódios.<h1/>'
+    dic = api_episodios(page)
+
+    return render_template("episodes.html", episodios=dic["results"])
 
 
 @app.route('/episode/<int:idt>')
