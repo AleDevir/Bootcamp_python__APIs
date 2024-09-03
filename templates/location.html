@@ -9,7 +9,7 @@
 <ul>
     {% for residente in residentes %}
     <li>
-        <a href="{{ residente['url'] }}">{{ residente['Nome'] }}</a> 
+        <a href="{{ url_for('personagem', idt = residente.id) }}">{{ residente['Nome'] }}</a> 
         ({{ residente['Espécie'] }} - {{ residente['Status'] }})
     </li>
     {% endfor %}

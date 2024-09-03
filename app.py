@@ -178,8 +178,7 @@ def location(idt: int):
     Exibe os residentes de uma localização específica.
     '''
     # Fazendo a requisição para a API para obter os dados da localização
-    location_data = get_json_data_for(
-        f"https://rickandmortyapi.com/api/location/{idt}")
+    location_data = api_localizacao(idt)
 
     # Inicializando a lista de residentes
     residentes = []
@@ -192,6 +191,7 @@ def location(idt: int):
 
         # Adicionando as informações do residente na lista
         residente_info = {
+            "id": residente_data["id"],
             "Nome": residente_data["name"],
             "Espécie": residente_data["species"],
             "Status": residente_data["status"],
