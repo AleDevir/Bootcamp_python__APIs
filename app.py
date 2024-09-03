@@ -123,7 +123,9 @@ def personagem(idt: int):
     Personagem
     '''
     dados_personagem = api_personagem(idt)
-    return render_template('personagem.html', personagem=dados_personagem)
+    origem = get_json_data_for(dados_personagem['origin']['url']) if dados_personagem['origin']['url'] else {}
+    localizacao = get_json_data_for(dados_personagem['location']['url']) if dados_personagem['location']['url'] else {}
+    return render_template('personagem.html', personagem=dados_personagem, origem=origem, localizacao=localizacao)
 
 
 @app.route('/episodes')
