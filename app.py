@@ -65,22 +65,11 @@ def api_personagem(idt: int) -> dict[str, Any]:
 
 
 @app.route('/api/episodios/<int:page>')
-def api_episodios() -> dict[str, Any]:
-
-    url = "https://rickandmortyapi.com/api/episode"
-    dic = get_json_data_for(url)
-    episodios = []
-
-    for episodio in dic["results"]:
-        episodio = {
-            "Nome do episódio: ": episodio["name"],
-            "Data em que foi ao ar: ": episodio["air_date"],
-            "Código do episódio: ": episodio["episode"],
-            "Link para o episódio: ": episodio["url"]
-        }
-        episodios.append(episodio)
-
-    return episodios
+def api_episodios(page: int) -> dict[str, Any]:
+    '''
+    Api Episódios
+    '''
+    return get_json_data_for(f"https://rickandmortyapi.com/api/episode?page={page}")
 
 
 @app.route('/api/episodio/<int:idt>')
@@ -134,15 +123,17 @@ def personagem(idt: int):
     Personagem
     '''
     dados_personagem = api_personagem(idt)
-    return render_template('personagem.html', personagem=dados_personagem)
+    origem = get_json_data_for(dados_personagem['origin']['url']) if dados_personagem['origin']['url'] else {}
+    localizacao = get_json_data_for(dados_personagem['location']['url']) if dados_personagem['location']['url'] else {}
+    return render_template('personagem.html', personagem=dados_personagem, origem=origem, localizacao=localizacao)
 
 
 @app.route('/episodes')
 def episodios_sem_pagina():
-    url = "https://rickandmortyapi.com/api/episode"
-    dic = get_json_data_for(url)
-
-    return render_template("episodes.html", episodios=dic["results"])
+    '''
+    Episódios
+    '''
+    return redirect('/episodes/1')
 
 
 @app.route('/episodes/<int:page>')
@@ -150,8 +141,9 @@ def episodes(page: int):
     '''
     Episódios
     '''
-    print(f"Episódios PAGE={page}")
-    return '<h1 style="color: red;">Fazer a renderização da página com informações dos episódios.<h1/>'
+    dic = api_episodios(page)
+
+    return render_template("episodes.html", episodios=dic["results"])
 
 
 @app.route('/episode/<int:idt>')
@@ -186,8 +178,7 @@ def location(idt: int):
     Exibe os residentes de uma localização específica.
     '''
     # Fazendo a requisição para a API para obter os dados da localização
-    location_data = get_json_data_for(
-        f"https://rickandmortyapi.com/api/location/{idt}")
+    location_data = api_localizacao(idt)
 
     # Inicializando a lista de residentes
     residentes = []
@@ -200,6 +191,7 @@ def location(idt: int):
 
         # Adicionando as informações do residente na lista
         residente_info = {
+            "id": residente_data["id"],
             "Nome": residente_data["name"],
             "Espécie": residente_data["species"],
             "Status": residente_data["status"],

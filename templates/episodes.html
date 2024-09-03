@@ -15,7 +15,7 @@
                     <b>Código do episódio:</b> {{ episodio.episode }}
                 </div>
                 <div class="episodio-link">
-                    <a href="{{ episodio.url }}" target="_blank">Link para o episódio</a>
+                    <a href="{{url_for('episode', idt=episodio.url.split('/')[-1])}}">Link para o episódio</a>
                 </div>
             </div>        
         </div>
