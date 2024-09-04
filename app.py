@@ -155,7 +155,7 @@ def episode(idt: int):
     return '<h1 style="color: red;">Fazer a renderização da página com as informações de um episódio e seus personagens.<h1/>'
 
 
-app.route('/locations')
+@app.route('/locations')
 def localizacoes_sem_pagina():
     '''
     Localizações
