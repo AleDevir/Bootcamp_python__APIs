@@ -1,6 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content %}
+
+<div style="margin-top: 20px;">
+    <a class="btn btn-sm text-info mt-3 border border-info "
+    href="javascript:history.back()">voltar</a>
+</div>
+
 <h1>Localização: {{ location_data.name }}</h1>
 <p><strong>Tipo:</strong> {{ location_data.type }}</p>
 <p><strong>Dimensão:</strong> {{ location_data.dimension }}</p>
