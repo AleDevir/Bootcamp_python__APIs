@@ -9,7 +9,6 @@ Integrantes:
 - Érika Brito Correia
 - Fabiane Cavalheiro dos Santos
 - Mayla Silva de Siqueira Krama
-- Thaysa Borges de Lima Santos
 - Rafaela Clementino Pereira Caro
 
 Comando para instalação dos pacotes:
