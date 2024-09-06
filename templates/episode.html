@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h4 class="text-info text-center mb-5 mt-5">Perfil dos Episódios</h4>
+<div class="row">
+    <div class="col-sm-6">
+        <h1>{{ episode.name }}</h1>
+        <p>Data de Lançamento: {{ episode.air_date }}</p>
+        <p>Código: {{ episode.episode }}</p>
+    </div>
+    <div class="col-sm-6">
+        <h4>Personagens:</h4>
+        <ul>
+            {% for character_url in episode.characters %}
+            {% set character_id = character_url.split('/')[-1] %}
+            <li><a href="{{ url_for('personagem', idt=character_id) }}">Personagem {{ character_id }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col-sm-3 col6">
+        <img src = "{{episode.image}}" alt="{{episode.name}}" class="img-fluid img-thumbnail" />
+        
+    </div>
+</div>
+
+{% endblock %}
