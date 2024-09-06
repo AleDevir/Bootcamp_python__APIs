@@ -148,16 +148,16 @@ def episodes(page: int):
 
 @app.route('/episode/<int:idt>')
 def episode(idt: int):
-    url = "https://rickandmortyapi.com/api/character/" + id
+    url = f"https://rickandmortyapi.com/api/episode/{idt}"
     response = urllib.request.urlopen(url)
     data = response.read()
-    dict = json.loads(data)
+    episode = json.loads(data)
 
     '''
     Episódio de identificador informado.
     '''
     print(f"Episódio ID={idt}")
-    return render_template ("episode.html", episode=dict)
+    return render_template ("episode.html", episode=episode)
 
 
 @app.route('/locations')
