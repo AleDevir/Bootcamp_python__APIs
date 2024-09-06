@@ -1,51 +1,27 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<div class="d-flex justify-content-between">
-{% if page > 1 %}
-<a href="{{ url_for('episodes', page = page-1)}}" class="btn btn-sm text-info mt-3 border border-info">voltar</a>
-
-{% else %}
-<span>&nbsp;</span>
-{% endif %}
-
-{% if page < dic.info.pages %} 
-<a href="{{ url_for('episodes', page = page+1)}}" class="btn btn-sm text-info mt-3 border border-info">próximo</a>
-{% endif %}
-</div>
-<h4 class="text-info text-center mb-5 mt-5">Episódios</h4>
+<h4 class="text-info text-center mb-5 mt-5">Perfil dos Episódios</h4>
 <div class="row">
-    <table class="table table-bordered table-hover text-dark text-center" style="background-color: #17a2b8; color: #ffffff;">
-        <thead>
-            <tr>
-                <th style="background-color: #094a53; color: #ffffff;">Nome do episódio</th>
-                <th style="background-color: #094a53; color: #ffffff;">Data de lançamento</th>
-                <th style="background-color: #094a53; color: #ffffff;">Código do episódio</th>
-                <th style="background-color: #094a53; color: #ffffff;">Link</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for episodio in dic.results %}
-            <tr>
-                <td style="background-color: #17a2b8;">{{ episodio.name }}</td>
-                <td style="background-color: #17a2b8;">{{ episodio.air_date }}</td>
-                <td style="background-color: #17a2b8;">{{ episodio.episode }}</td>
-                <td style="background-color: #17a2b8;"><a href="{{ url_for('episode', idt=episodio.url.split('/')[-1]) }}" class="btn btn-sm btn-outline-dark">Ver Episódio</a></td>
-            </tr>
+    <div class="col-sm-6">
+        <h1>{{ episode.name }}</h1>
+        <p>Data de Lançamento: {{ episode.air_date }}</p>
+        <p>Código: {{ episode.episode }}</p>
+    </div>
+    <div class="col-sm-6">
+        <h4>Personagens:</h4>
+        <ul>
+            {% for character_url in episode.characters %}
+            {% set character_id = character_url.split('/')[-1] %}
+            <li><a href="{{ url_for('personagem', idt=character_id) }}">Personagem {{ character_id }}</a></li>
             {% endfor %}
-            
-            
+        </ul>
+    </div>
 
-            <div class="col-sm-3 col6">
-                <img src = "{{episode.image}}" alt="{{episode.name}}" class="img-fluid img-thumbnail" />
-                
-            </div>
-
-            <div class = "col-sm-3 col-6"> 
-                <h1 class="h5">{{episode.name}}</h1>
-
-            </div>
-        </tbody>
-    </table>
+    <div class="col-sm-3 col6">
+        <img src = "{{episode.image}}" alt="{{episode.name}}" class="img-fluid img-thumbnail" />
+        
+    </div>
 </div>
+
 {% endblock %}
