@@ -204,7 +204,7 @@ def location(idt: int):
         }
         residentes.append(residente_info)
 
-    return render_template('location.html', location_data=location_data, residentes=residentes)
+    return render_template('location.html', location_data=location_data, residentes=residentes) 
 
 #####################################################
 ####           TRATAMENTO  DE  ERROS             ####
